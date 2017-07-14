@@ -1,0 +1,205 @@
+<html>
+	<head>
+<meta charset="utf-8" />
+		<title>Hello</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+<link href="app-content/app.css" rel="stylesheet" />
+<script src="app.js"></script>
+</head>
+	<body ng-app="app" ng-controller="appCtrl">
+
+		<div class="jumbotron">
+		<div class="credits text-center">
+		  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >Learn more
+		  </button>
+			<button class="btn btn-primary" type="button" onclick="window.location.href='learnmore.html'" >Carousel
+		  </button>
+
+
+
+
+
+			<div class="collapse" id="collapseExample">
+  <h1><strong>Welcome to Blog</strong></h1>
+	<p>Site is in Contruction</p>
+  </div>
+</div>
+</div>
+
+<div class="jumbotron">
+
+	<div class="credits text-center">
+	<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#signup" data-whatever="@signup">Sign up
+	</button>
+	<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#signin" data-whatever="@signin">Sign in
+	</button>
+</div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Registration</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="firstname" class="control-label">First Name:</label>
+            <input type="text" required="Please fill out this field." ng-model="app.name" class="form-control" id="name1" placeholder="Name"/>
+          </div>
+					<div class="form-group">
+            <label for="gender" class="control-label">Gender:</label>
+						<select ng-model="app.gender"  ng-options="value for value in gender"></select>
+</div>
+          <div class="form-group">
+            <label for="email" class="control-label">Email-id:</label>
+            <input type="email" required="Please fill out this field." class="form-control" id="email1"   ng-model="app.email" placeholder="Email"/>
+          </div>
+
+					<div class="form-group">
+            <label for="passwd" class="control-label">Password:</label>
+            <input type="password" required="Please fill out this field." class="form-control" id="passwd1"  ng-model="app.passwd"  placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="add()" data-toggle="modal" data-target="#submit" data-whatever="@submit" data-dismiss="modal">Submit</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="submit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert">Well done! You have successfully submitted the form.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Sign in</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+            <label for="email" class="control-label">E-mail Id:</label>
+            <input type="email" required="Please fill out this field." class="form-control" id="email1"   ng-model="app.email" placeholder="Email"/>
+          </div>
+					<div class="form-group">
+            <label for="member-passwd" class="control-label">Password:</label>
+            <input type="password" required="Please fill out this field." class="form-control" id="passwd1"  ng-model="app.passwd"  placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login" data-whatever="@login" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="submit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert">Well done! You have successfully submitted the form.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert">Well done! You have successfully logged in.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOwlWebaMtN4nJkZG5Xz7WCK3aRGkSPGQ",
+    authDomain: "fir-fbdf6.firebaseapp.com",
+    databaseURL: "https://fir-fbdf6.firebaseio.com",
+    projectId: "fir-fbdf6",
+    storageBucket: "fir-fbdf6.appspot.com",
+    messagingSenderId: "600153281778"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+var email = email1;
+var password = passwd1;
+
+firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+   console.log(error.code);
+   console.log(error.message);
+});</script>
+  
+
+</body>
+	</html>
